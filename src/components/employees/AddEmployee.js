@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
+import { Consumer } from '../../context';
 
 class AddEmployee extends Component {
+  state = {
+    name: '',
+    email: '',
+    phone: ''
+  };
+
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     return (
       <div className='add-employee'>

@@ -3,6 +3,19 @@ import React, { Component } from 'react';
 //create context
 const Context = React.createContext();
 
+//Add reducer to manipulate state
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_CONTACT':
+      return {
+        ...state,
+        contacts: [action.payload, ...state.contacts]
+      };
+    default:
+      return state;
+  }
+};
+
 //create Provider
 export class Provider extends Component {
   //create state
@@ -20,7 +33,10 @@ export class Provider extends Component {
         email: 'jmoney@example.com',
         phone: '333-333-3333'
       }
-    ]
+    ],
+    displatch: action => {
+      this.setState(state => reducer(state, action));
+    }
   };
 
   //external provider
