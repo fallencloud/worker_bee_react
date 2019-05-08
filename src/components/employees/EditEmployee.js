@@ -1,28 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Consumer } from '../../context';
 
-class AddEmployee extends Component {
-  state = {
-    name: '',
-    email: '',
-    phone: ''
-  };
-
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
+class EditEmployee extends Component {
   render() {
     return (
-      <div className='add-employee'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-md-8 m-auto'>
-              <Link to='/' className='btn btn-light'>
+      <div class='edit-employee'>
+        <div class='container'>
+          <div class='row'>
+            <div class='col-md-8 m-auto'>
+              <Link to='/' class='btn btn-light'>
                 Go Back
               </Link>
-              <h1 className='display-4 text-center'>Add An Employee</h1>
+              <h1 class='display-4 text-center'>Edit An Employee</h1>
               <form>
                 <div className='form-group'>
                   <input
@@ -50,7 +39,7 @@ class AddEmployee extends Component {
                     name='phone'
                   />
                 </div>
-                <input type='submit' className='btn btn-info btn-block mt-4' />
+                <input type='submit' class='btn btn-info btn-block mt-4' />
               </form>
             </div>
           </div>
@@ -60,4 +49,4 @@ class AddEmployee extends Component {
   }
 }
 
-export default AddEmployee;
+export default EditEmployee;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Consumer } from '../../context';
 import Employee from './Employee';
 
@@ -16,7 +17,7 @@ class Employees extends Component {
                     {/*<!-- Dashboard Actions -->*/}
                     <button type='button' className='btn btn-link mb-4'>
                       <i className='fas fa-user-circle text-info mr-1' />
-                      <a href='add-employee.html'>Add Employee</a>
+                      <Link to='/add-employee'>Add Employee</Link>
                     </button>
 
                     {/*<!-- Employees -->*/}

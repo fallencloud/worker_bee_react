@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <>
       <nav className='navbar navbar-expand-sm navbar-dark bg-dark mb-4'>
         <div className='container'>
-          <a className='navbar-brand' href='landing.html'>
+          <Link className='navbar-brand' to='/'>
             Worker Bee
-          </a>
+          </Link>
           <button
             className='navbar-toggler'
             type='button'
@@ -20,9 +21,14 @@ const Header = () => {
           <div className='collapse navbar-collapse' id='mobile-nav'>
             <ul className='navbar-nav ml-auto'>
               <li className='nav-item'>
-                <a className='nav-link' href='dashboard.html'>
+                <Link className='nav-link' to='/'>
                   Dashboard
-                </a>
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link className='nav-link' to='/about'>
+                  About
+                </Link>
               </li>
             </ul>
           </div>

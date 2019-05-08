@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Consumer } from '../../context';
 
 class Employee extends Component {
@@ -14,9 +15,9 @@ class Employee extends Component {
               <td>{phone}</td>
               <td>
                 <button type='button' className='btn btn-link mb-4'>
-                  <a href='edit-employee.html'>
+                  <Link to='/edit-employee'>
                     <i className='far fa-edit text-info mr-1' />
-                  </a>
+                  </Link>
                 </button>
                 <button type='button' className='btn btn-link mb-4'>
                   <i className='far fa-trash-alt' />

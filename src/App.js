@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //import Provider
 import { Provider } from './context';
@@ -6,23 +7,36 @@ import { Provider } from './context';
 //components
 import Header from './components/layout/Header';
 import Employees from './components/employees/Employees';
+import AddEmployee from './components/employees/AddEmployee';
+import EditEmployee from './components/employees/EditEmployee';
 import Footer from './components/layout/Footer';
+
+//pages
+import About from './components/pages/About';
+import NotFound from './components/pages/NotFound';
 
 //css
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
-  return (
-    <div className='App'>
-      {/*Provide app level state */}
+class App extends Component {
+  render() {
+    return (
       <Provider>
-        <Header />
-        <Employees />
-        <Footer />
+        <Router>
+          <div className='App'>
+            <Header />
+            <Switch>
+              <Route exact path='/' component={Employees} />
+              <Route exact path='/about' component={About} />
+              <Route exact path='/add-employee' component={AddEmployee} />
+              <Route exact path='/edit-employee' component={EditEmployee} />
+            </Switch>
+          </div>
+        </Router>
       </Provider>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
