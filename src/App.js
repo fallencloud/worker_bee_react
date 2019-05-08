@@ -32,6 +32,7 @@ class App extends Component {
               <Route exact path='/add-employee' component={AddEmployee} />
               <Route exact path='/edit-employee' component={EditEmployee} />
             </Switch>
+            <Footer />
           </div>
         </Router>
       </Provider>

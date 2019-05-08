@@ -43,3 +43,9 @@ img {
   min-height: 100vh;
   flex-direction: column;
 }
+
+.dashboard,
+.add-employee,
+.edit-employee {
+  height: 100vh;
+}

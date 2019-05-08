@@ -11,6 +11,13 @@ const reducer = (state, action) => {
         ...state,
         employees: [action.payload, ...state.employees]
       };
+    case 'DELETE_EMPLOYEE':
+      return {
+        ...state,
+        employees: state.employees.filter(
+          employee => employee.id !== action.payload
+        )
+      };
     default:
       return state;
   }
