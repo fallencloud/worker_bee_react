@@ -6,10 +6,10 @@ const Context = React.createContext();
 //Add reducer to manipulate state
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_CONTACT':
+    case 'ADD_EMPLOYEE':
       return {
         ...state,
-        contacts: [action.payload, ...state.contacts]
+        employees: [action.payload, ...state.employees]
       };
     default:
       return state;
@@ -34,7 +34,7 @@ export class Provider extends Component {
         phone: '333-333-3333'
       }
     ],
-    displatch: action => {
+    dispatch: action => {
       this.setState(state => reducer(state, action));
     }
   };

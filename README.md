@@ -9,3 +9,4 @@ This is a client side implementation of my Worker Bee app using React.
 3. Added the Context API
 4. Added state
 5. Add React Router
+6. Add 'add contact' functionality
