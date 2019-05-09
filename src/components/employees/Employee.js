@@ -15,6 +15,7 @@ class Employee extends Component {
 
   render() {
     const { id, name, email, phone } = this.props.employee;
+
     return (
       <Consumer>
         {value => {

@@ -6,6 +6,13 @@ const Context = React.createContext();
 //Add reducer to manipulate state
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'GET_EMPLOYEE':
+      return {
+        ...state,
+        employees: state.employees.filter(
+          employee => employee.id === action.payload
+        )
+      };
     case 'ADD_EMPLOYEE':
       return {
         ...state,
@@ -23,8 +30,8 @@ const reducer = (state, action) => {
     case 'DELETE_EMPLOYEE':
       return {
         ...state,
-        employees: state.employees.filter(
-          employee => employee.id !== action.payload
+        employees: state.employees.filter(employee =>
+          employee.id !== action.payload ? employee : null
         )
       };
     default:
@@ -39,7 +46,14 @@ export class Provider extends Component {
     employees: [],
     dispatch: action => {
       this.setState(state => reducer(state, action));
-    }
+    },
+    getEmployee: this.getEmployee
+  };
+
+  getEmployee = id => {
+    const emp = this.state.employees.filter(employee => employee.id === id);
+    console.log(emp);
+    return emp;
   };
 
   //CRUD: Read data from API

@@ -14,24 +14,22 @@ class EditEmployee extends Component {
     phone: ''
   };
 
-  //send in info to be updated
   async componentDidMount() {
-    //get the ID from the URL
     const { id } = this.props.match.params;
 
-    //request the user's info from the API
-    const res = await axios.get(
-      `https://jsonplaceholder.typicode.com/users/${id}`
-    );
-
-    //fill in state with the info
-    const employee = res.data;
-
-    this.setState({
-      name: employee.name,
-      email: employee.email,
-      phone: employee.phone
-    });
+    try {
+      const res = await axios.get(
+        `https://jsonplaceholder.typicode.com/users/${id}`
+      );
+      const employee = res.data;
+      this.setState({
+        name: employee.name,
+        email: employee.email,
+        phone: employee.phone
+      });
+    } catch (e) {
+      return;
+    }
   }
 
   onChange = e => {
@@ -55,13 +53,22 @@ class EditEmployee extends Component {
     const { id } = this.props.match.params;
 
     //PUT the data on the server
-    const res = await axios.put(
-      `https://jsonplaceholder.typicode.com/users/${id}`,
-      edtEmployee
-    );
+    try {
+      const res = await axios.put(
+        `https://jsonplaceholder.typicode.com/users/${id}`,
+        edtEmployee
+      );
 
-    //call dispatch
-    dispatch({ type: 'UPDATE_EMPLOYEE', payload: res.data });
+      //call dispatch
+      dispatch({ type: 'UPDATE_EMPLOYEE', payload: res.data });
+    } catch (e) {
+      edtEmployee.id = id;
+      //simulate Updating info
+      dispatch({ type: 'DELETE_EMPLOYEE', payload: id });
+
+      //call dispatch
+      dispatch({ type: 'ADD_EMPLOYEE', payload: edtEmployee });
+    }
 
     //reset form
     this.setState({
@@ -76,10 +83,20 @@ class EditEmployee extends Component {
 
   render() {
     const { name, email, phone } = this.state;
+
     return (
       <Consumer>
         {value => {
-          const { dispatch } = value;
+          const { dispatch, employees } = value;
+          const { id } = this.props.match.params;
+          let emp;
+          emp = employees.filter(employee => {
+            if (employee.id == id) {
+              return employee;
+            }
+            return;
+          });
+
           return (
             <div className='add-employee'>
               <div className='container'>
@@ -93,14 +110,14 @@ class EditEmployee extends Component {
                       <TextInputGroup
                         type='text'
                         name='name'
-                        placeholder='* Name'
+                        placeholder={name}
                         value={name}
                         onChange={this.onChange}
                       />
                       <TextInputGroup
                         type='text'
                         name='email'
-                        placeholder='* Email'
+                        placeholder={email}
                         value={email}
                         onChange={this.onChange}
                       />
@@ -108,7 +125,7 @@ class EditEmployee extends Component {
                       <TextInputGroup
                         type='text'
                         name='phone'
-                        placeholder='* Phone'
+                        placeholder={phone}
                         value={phone}
                         onChange={this.onChange}
                       />
