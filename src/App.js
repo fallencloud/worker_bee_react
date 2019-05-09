@@ -9,7 +9,6 @@ import Header from './components/layout/Header';
 import Employees from './components/employees/Employees';
 import AddEmployee from './components/employees/AddEmployee';
 import EditEmployee from './components/employees/EditEmployee';
-import Footer from './components/layout/Footer';
 
 //pages
 import About from './components/pages/About';
@@ -32,7 +31,6 @@ class App extends Component {
               <Route exact path='/add-employee' component={AddEmployee} />
               <Route exact path='/edit-employee' component={EditEmployee} />
             </Switch>
-            <Footer />
           </div>
         </Router>
       </Provider>
