@@ -19,3 +19,8 @@ This is a client side implementation of my Worker Bee app using React.
 13. CRUD: Update: Sent PUT request and update state
 14. Improve UI
 15. Deploy to GitHub
+
+#Bugs
+You cannot currently edit an employee that you add yourself because the app relies on the API to provide the employee you want to edit.
+
+I created a bit of a hack to get around this but it's not truly an update. It'll work fine if I ever get to connected to a real database 😅
