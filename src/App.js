@@ -29,7 +29,8 @@ class App extends Component {
               <Route exact path='/' component={Employees} />
               <Route exact path='/about' component={About} />
               <Route exact path='/add-employee' component={AddEmployee} />
-              <Route exact path='/edit-employee' component={EditEmployee} />
+              <Route exact path='/edit-employee/:id' component={EditEmployee} />
+              <Route component={NotFound} />
             </Switch>
           </div>
         </Router>

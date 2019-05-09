@@ -11,6 +11,15 @@ const reducer = (state, action) => {
         ...state,
         employees: [action.payload, ...state.employees]
       };
+    case 'UPDATE_EMPLOYEE':
+      return {
+        ...state,
+        employees: state.employees.map(employee =>
+          employee.id === action.payload.id
+            ? (employee = action.payload)
+            : employee
+        )
+      };
     case 'DELETE_EMPLOYEE':
       return {
         ...state,

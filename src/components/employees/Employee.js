@@ -18,12 +18,22 @@ class Employee extends Component {
           const { dispatch } = value;
           return (
             <tr className='employee'>
-              <td>{name}</td>
-              <td>{email}</td>
-              <td>{phone}</td>
+              <td>
+                <span className='font-weight-bold lead'>{name}</span>
+                <table>
+                  <tr>
+                    <th className='lead'>Phone:</th>
+                    <td>{phone}</td>
+                  </tr>
+                  <tr>
+                    <th className='lead'>Email:</th>
+                    <td>{email}</td>
+                  </tr>
+                </table>
+              </td>
               <td>
                 <button type='button' className='btn btn-link mb-4'>
-                  <Link to='/edit-employee'>
+                  <Link to={`/edit-employee/${id}`}>
                     <i className='far fa-edit text-info mr-1' />
                   </Link>
                 </button>

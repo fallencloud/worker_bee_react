@@ -16,3 +16,5 @@ This is a client side implementation of my Worker Bee app using React.
 10. CRUD: Read Contacts into state
 11. CRUD: Create: Send Add request to API
 12. CRUD: Delete: Send DELETE request to API
+13. CRUD: Update: Sent PUT request and update state
+14. Improve UI

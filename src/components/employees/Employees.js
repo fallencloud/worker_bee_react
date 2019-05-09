@@ -27,8 +27,6 @@ class Employees extends Component {
                         <thead>
                           <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
                             <th>Edit/Delete</th>
                           </tr>
                         </thead>
