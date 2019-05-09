@@ -15,3 +15,4 @@ This is a client side implementation of my Worker Bee app using React.
 9. Added sticky footer
 10. CRUD: Read Contacts into state
 11. CRUD: Create: Send Add request to API
+12. CRUD: Delete: Send DELETE request to API
