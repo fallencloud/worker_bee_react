@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <Provider>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <div className='App'>
             <Header />
             <Switch>

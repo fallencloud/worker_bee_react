@@ -18,3 +18,4 @@ This is a client side implementation of my Worker Bee app using React.
 12. CRUD: Delete: Send DELETE request to API
 13. CRUD: Update: Sent PUT request and update state
 14. Improve UI
+15. Deploy to GitHub
