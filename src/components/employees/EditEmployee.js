@@ -63,11 +63,9 @@ class EditEmployee extends Component {
       dispatch({ type: 'UPDATE_EMPLOYEE', payload: res.data });
     } catch (e) {
       edtEmployee.id = id;
-      //simulate Updating info
-      dispatch({ type: 'DELETE_EMPLOYEE', payload: id });
 
       //call dispatch
-      dispatch({ type: 'ADD_EMPLOYEE', payload: edtEmployee });
+      dispatch({ type: 'UPDATE_EMPLOYEE', payload: edtEmployee });
     }
 
     //reset form
@@ -87,15 +85,15 @@ class EditEmployee extends Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch, employees } = value;
-          const { id } = this.props.match.params;
-          let emp;
-          emp = employees.filter(employee => {
-            if (employee.id == id) {
-              return employee;
-            }
-            return;
-          });
+          const { dispatch } = value;
+          // const { id } = this.props.match.params;
+          // let emp;
+          // emp = employees.filter(employee => {
+          //   if (employee.id == id) {
+          //     return employee;
+          //   }
+          //   return;
+          // });
 
           return (
             <div className='add-employee'>
