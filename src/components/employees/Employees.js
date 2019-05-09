@@ -13,7 +13,7 @@ class Employees extends Component {
             <div className='dashboard'>
               <div className='container'>
                 <div className='row'>
-                  <div className='col-md-12'>
+                  <div className='col-lg-12'>
                     {/*<!-- Dashboard Actions -->*/}
                     <button type='button' className='btn btn-link mb-4'>
                       <i className='fas fa-user-circle text-info mr-1' />
@@ -24,12 +24,6 @@ class Employees extends Component {
                     <div>
                       <h4 className='mb-2'>Employee Directory</h4>
                       <table className='table'>
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Edit/Delete</th>
-                          </tr>
-                        </thead>
                         <tbody>
                           {employees.map(employee => (
                             <Employee key={employee.id} employee={employee} />

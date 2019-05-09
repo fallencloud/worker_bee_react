@@ -5,9 +5,12 @@ import axios from 'axios';
 
 class Employee extends Component {
   onDeleteClick = async (id, dispatch) => {
-    await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
-
-    dispatch({ type: 'DELETE_EMPLOYEE', payload: id });
+    try {
+      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+      dispatch({ type: 'DELETE_EMPLOYEE', payload: id });
+    } catch (e) {
+      dispatch({ type: 'DELETE_EMPLOYEE', payload: id });
+    }
   };
 
   render() {
@@ -20,30 +23,47 @@ class Employee extends Component {
             <tr className='employee'>
               <td>
                 <span className='font-weight-bold lead'>{name}</span>
-                <table>
-                  <tr>
-                    <th className='lead'>Phone:</th>
-                    <td>{phone}</td>
-                  </tr>
-                  <tr>
-                    <th className='lead'>Email:</th>
-                    <td>{email}</td>
-                  </tr>
-                </table>
-              </td>
-              <td>
-                <button type='button' className='btn btn-link mb-4'>
-                  <Link to={`/edit-employee/${id}`}>
-                    <i className='far fa-edit text-info mr-1' />
-                  </Link>
-                </button>
-                <button
-                  type='button'
-                  className='btn btn-link mb-4'
-                  onClick={this.onDeleteClick.bind(this, id, dispatch)}
+                <div
+                  className='btn-toolbar float-right'
+                  role='toolbar'
+                  aria-label='Toolbar with button groups'
                 >
-                  <i className='far fa-trash-alt' />
-                </button>
+                  <div className='btn-group mr-2' role='group'>
+                    <button
+                      type='button'
+                      className='btn btn-link mb-4'
+                      style={{ cursor: 'pointer', float: 'right' }}
+                      onClick={this.onDeleteClick.bind(this, id, dispatch)}
+                    >
+                      <i className='far fa-trash-alt' />
+                    </button>
+                  </div>
+                  <div className='btn-group mr-2' role='group'>
+                    <button
+                      type='button'
+                      className='btn btn-link mb-4'
+                      style={{ cursor: 'pointer', float: 'right' }}
+                    >
+                      <Link to={`/edit-employee/${id}`}>
+                        <i
+                          className='far fa-edit btn-link'
+                          style={{
+                            cursor: 'pointer',
+                            float: 'right'
+                          }}
+                        />
+                      </Link>
+                    </button>
+                  </div>
+                </div>
+                <ul className='list-unstyled'>
+                  <li>
+                    <span className='lead'>Phone</span>: {phone}
+                  </li>
+                  <li>
+                    <span className='lead'>Email</span>: {email}
+                  </li>
+                </ul>
               </td>
             </tr>
           );

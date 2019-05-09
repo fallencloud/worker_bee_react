@@ -47,8 +47,6 @@ export class Provider extends Component {
     //get data from db
     const res = await axios.get('https://jsonplaceholder.typicode.com/users');
 
-    console.log(res.data);
-
     //write data to state
     this.setState({
       employees: res.data
