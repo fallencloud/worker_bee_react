@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import { Consumer } from '../../context';
-import uuid from 'uuid';
 
 import TextInputGroup from '../layout/TextInputGroup';
 
@@ -18,20 +18,25 @@ class AddEmployee extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = (dispatch, e) => {
+  onSubmit = async (dispatch, e) => {
     e.preventDefault();
 
     //get current input values from state
     const { name, email, phone } = this.state;
 
     const newEmployee = {
-      id: uuid(),
       name,
       email,
       phone
     };
 
-    dispatch({ type: 'ADD_EMPLOYEE', payload: newEmployee });
+    //send POST request along with employee info
+    const res = await axios.post(
+      'https://jsonplaceholder.typicode.com/users',
+      newEmployee
+    );
+
+    dispatch({ type: 'ADD_EMPLOYEE', payload: res.data });
 
     //reset form
     this.setState({
