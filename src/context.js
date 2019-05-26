@@ -59,7 +59,18 @@ export class Provider extends Component {
   //CRUD: Read data from API
   async componentDidMount() {
     //get data from db
-    const res = await axios.get('https://jsonplaceholder.typicode.com/users');
+    const res = await axios.get('/api/users');
+
+    //write data to state
+    this.setState({
+      employees: res.data
+    });
+  }
+
+  //Ensures app refreshes after state changes
+  async componentDidUpdate() {
+    //get data from db
+    const res = await axios.get('/api/users');
 
     //write data to state
     this.setState({

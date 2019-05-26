@@ -20,6 +20,12 @@ This is a client side implementation of my Worker Bee app using React.
 14. Improve UI
 15. Deploy to GitHub
 
+#Full Stack Actions
+
+1. Set up proxy
+2. Changed app to pull info from Worker Bee API
+3. Ensured app refreshes after state changes
+
 #Bugs
 You cannot currently edit an employee that you add yourself because the app relies on the API to provide the employee you want to edit.
 

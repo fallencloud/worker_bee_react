@@ -5,16 +5,13 @@ import axios from 'axios';
 
 class Employee extends Component {
   onDeleteClick = async (id, dispatch) => {
-    try {
-      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
-      dispatch({ type: 'DELETE_EMPLOYEE', payload: id });
-    } catch (e) {
-      dispatch({ type: 'DELETE_EMPLOYEE', payload: id });
-    }
+    await axios.delete(`/api/users/${id}`);
+
+    dispatch({ type: 'DELETE_EMPLOYEE', payload: id });
   };
 
   render() {
-    const { id, name, email, phone } = this.props.employee;
+    const { _id, name, email, phone } = this.props.employee;
 
     return (
       <Consumer>
@@ -34,7 +31,7 @@ class Employee extends Component {
                       type='button'
                       className='btn btn-link mb-4'
                       style={{ cursor: 'pointer', float: 'right' }}
-                      onClick={this.onDeleteClick.bind(this, id, dispatch)}
+                      onClick={this.onDeleteClick.bind(this, _id, dispatch)}
                     >
                       <i className='far fa-trash-alt' />
                     </button>
@@ -45,7 +42,7 @@ class Employee extends Component {
                       className='btn btn-link mb-4'
                       style={{ cursor: 'pointer', float: 'right' }}
                     >
-                      <Link to={`/edit-employee/${id}`}>
+                      <Link to={`/edit-employee/${_id}`}>
                         <i
                           className='far fa-edit btn-link'
                           style={{

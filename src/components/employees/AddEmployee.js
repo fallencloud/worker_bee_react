@@ -31,10 +31,7 @@ class AddEmployee extends Component {
     };
 
     //send POST request along with employee info
-    const res = await axios.post(
-      'https://jsonplaceholder.typicode.com/users',
-      newEmployee
-    );
+    const res = await axios.post('/api/users', newEmployee);
 
     dispatch({ type: 'ADD_EMPLOYEE', payload: res.data });
 

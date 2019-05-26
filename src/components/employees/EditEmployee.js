@@ -18,9 +18,7 @@ class EditEmployee extends Component {
     const { id } = this.props.match.params;
 
     try {
-      const res = await axios.get(
-        `https://jsonplaceholder.typicode.com/users/${id}`
-      );
+      const res = await axios.get(`/api/users/${id}`);
       const employee = res.data;
       this.setState({
         name: employee.name,
@@ -53,20 +51,10 @@ class EditEmployee extends Component {
     const { id } = this.props.match.params;
 
     //PUT the data on the server
-    try {
-      const res = await axios.put(
-        `https://jsonplaceholder.typicode.com/users/${id}`,
-        edtEmployee
-      );
+    const res = await axios.put(`/api/users/${id}`, edtEmployee);
 
-      //call dispatch
-      dispatch({ type: 'UPDATE_EMPLOYEE', payload: res.data });
-    } catch (e) {
-      edtEmployee.id = id;
-
-      //call dispatch
-      dispatch({ type: 'UPDATE_EMPLOYEE', payload: edtEmployee });
-    }
+    //call dispatch
+    dispatch({ type: 'UPDATE_EMPLOYEE', payload: res.data });
 
     //reset form
     this.setState({

@@ -26,7 +26,7 @@ class Employees extends Component {
                       <table className='table'>
                         <tbody>
                           {employees.map(employee => (
-                            <Employee key={employee.id} employee={employee} />
+                            <Employee key={employee._id} employee={employee} />
                           ))}
                         </tbody>
                       </table>
