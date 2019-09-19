@@ -2,6 +2,8 @@
 
 This is a client side implementation of my Worker Bee app using React.
 
+View Live: https://fallencloud.github.io/worker_bee_react/
+
 ## Tasks
 
 1. Separated UI into components
